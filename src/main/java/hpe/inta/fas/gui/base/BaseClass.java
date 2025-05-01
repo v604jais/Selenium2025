@@ -1,5 +1,7 @@
 package hpe.inta.fas.gui.base;
 import hpe.inta.fas.gui.actiondriver.ActionDriver;
+import hpe.inta.fas.gui.utilities.LoggerManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -22,6 +24,8 @@ public class BaseClass {
     protected static WebDriver driver;
     protected static Properties prop;
     private  static ActionDriver actionDriver;
+
+    public static final Logger logger = LoggerManager.getLogger(BaseClass.class);
 
     public void loadConfig() throws IOException {
         // creating properties object
@@ -83,14 +87,17 @@ public class BaseClass {
 
         //load config
         loadConfig();
+        logger.info(" running load config from setUp method ");
         //browser set up
         launchBrowser();
+        logger.info(" launching browser ");
         //browser config
         configBrowser();
-
+        logger.info(" configuring browser ");
         // actionDriver
         if(actionDriver == null){
             actionDriver = new ActionDriver(driver);
+            logger.info(" initializing action driver ");
         }
 
     }
@@ -98,7 +105,8 @@ public class BaseClass {
     //driver getter method
     public static WebDriver getDriver() {
         if (driver == null ){
-            System.out.println(" WebDriver is not initialized ");
+            //System.out.println(" WebDriver is not initialized ");
+            logger.error(" WebDriver is not initialized " );
             throw new IllegalArgumentException(" WebDriver is not initialized ");
         }
         return driver;
@@ -106,38 +114,42 @@ public class BaseClass {
     //actionDriver getter method
     public static ActionDriver getActionDriver() {
         if (actionDriver == null ){
-            System.out.println(" Actiondriver is not initialized ");
-            throw new IllegalArgumentException(" Actiondriver is not initialized ");
+            //System.out.println(" actionDriver is not initialized ");
+            logger.error(" actionDriver is not initialized " );
+            throw new IllegalArgumentException(" actionDriver is not initialized ");
         }
         return actionDriver;
     }
 
     //driver setter method
     public void setDriver(WebDriver driver) {
+        logger.info(" setting driver ");
         this.driver = driver;
     }
 
     //static wait
     public void staticWait(int time) {
         LockSupport.parkNanos(TimeUnit.SECONDS.toNanos(time));
+        logger.info(" Static wait applied ");
     }
 
     //get prop
     public static Properties getProp() {
+        logger.info(" returning prop ");
         return prop;
+
     }
-
-
-
 
     //quit driver
     public void quitDriver() {
         try {
             if (driver != null) {
                 driver.quit();
+                logger.info("quiting the driver");
             }
         } catch (Exception e) {
-            System.out.println("problem in quiting the driver :: "+e.getMessage());
+            logger.error("problem in quiting the driver :: "+e.getMessage());
+            //System.out.println("problem in quiting the driver :: "+e.getMessage());
         }
         driver=null;
         actionDriver=null;

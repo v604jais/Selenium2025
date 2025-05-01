@@ -25,8 +25,9 @@
         </Root>
 
         <!-- Selenium logs (optional: suppress or tune) -->
-        <Logger name="org.openqa.selenium" level="warn" additivity="false">
+        <Logger name="hpe.inta.fas.gui" level="INFO" additivity="false">
             <AppenderRef ref="Console"/>
+            <AppenderRef ref="FileLogger"/>
         </Logger>
 
     </Loggers>

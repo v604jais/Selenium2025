@@ -18,17 +18,18 @@ public class LoginPageTest extends BaseClass {
 
     @BeforeMethod
     public void setupPages() throws IOException {
+        logger.info("Executing setUp Page ");
         //setting up driver
         setUP();
+
         //set up pages
         loginPage = new LoginPage(getDriver());
         homePage = new HomePage(getDriver());
-
     }
 
     @Test(groups = "login", priority = 1)
     public void loginValidation() throws InterruptedException {
-
+        logger.info("Executing loginValidation ");
         loginPage.loginUi(prop.getProperty("username"), prop.getProperty("password"));
         Assert.assertEquals(homePage.titleVerification(), "Unified OSS Console", "On Wrong Page Title MisMatch");
         System.out.println(homePage.titleVerification());
@@ -37,6 +38,7 @@ public class LoginPageTest extends BaseClass {
 
     @AfterMethod
     public void tearDown() {
+        logger.info("Executing tearDown ");
         quitDriver();
     }
 
