@@ -1,4 +1,5 @@
 package hpe.inta.fas.gui.automation.tests;
+
 import hpe.inta.fas.gui.base.BaseClass;
 import hpe.inta.fas.gui.pages.HomePage;
 import hpe.inta.fas.gui.pages.LoginPage;
@@ -25,11 +26,11 @@ public class LoginPageTest extends BaseClass {
 
     }
 
-    @Test(groups = "login",priority = 1)
+    @Test(groups = "login", priority = 1)
     public void loginValidation() throws InterruptedException {
 
         loginPage.loginUi(prop.getProperty("username"), prop.getProperty("password"));
-        Assert.assertEquals(homePage.titleVerification(),"Unified OSS Console","On Wrong Page Title MisMatch");
+        Assert.assertEquals(homePage.titleVerification(), "Unified OSS Console", "On Wrong Page Title MisMatch");
         System.out.println(homePage.titleVerification());
     }
 

@@ -17,9 +17,12 @@ public class LoginPage {
     private By signIn =  By.tagName("button");
 
     //constructor
-    public LoginPage(WebDriver driver) {
+   /* public LoginPage(WebDriver driver) {
 
         this.actionDriver = new ActionDriver(driver);
+    }*/
+    public LoginPage(WebDriver driver) {
+        this.actionDriver = BaseClass.getActionDriver();
     }
 
 

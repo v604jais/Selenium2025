@@ -1,5 +1,5 @@
 package hpe.inta.fas.gui.base;
-
+import hpe.inta.fas.gui.actiondriver.ActionDriver;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -8,7 +8,6 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.Duration;
@@ -20,8 +19,9 @@ import java.util.concurrent.locks.LockSupport;
 
 public class BaseClass {
 
-    protected WebDriver driver;
+    protected static WebDriver driver;
     protected static Properties prop;
+    private  static ActionDriver actionDriver;
 
     public void loadConfig() throws IOException {
         // creating properties object
@@ -88,11 +88,28 @@ public class BaseClass {
         //browser config
         configBrowser();
 
+        // actionDriver
+        if(actionDriver == null){
+            actionDriver = new ActionDriver(driver);
+        }
+
     }
 
     //driver getter method
-    public WebDriver getDriver() {
+    public static WebDriver getDriver() {
+        if (driver == null ){
+            System.out.println(" WebDriver is not initialized ");
+            throw new IllegalArgumentException(" WebDriver is not initialized ");
+        }
         return driver;
+    }
+    //actionDriver getter method
+    public static ActionDriver getActionDriver() {
+        if (actionDriver == null ){
+            System.out.println(" Actiondriver is not initialized ");
+            throw new IllegalArgumentException(" Actiondriver is not initialized ");
+        }
+        return actionDriver;
     }
 
     //driver setter method
@@ -115,9 +132,15 @@ public class BaseClass {
 
     //quit driver
     public void quitDriver() {
-        if (driver != null) {
-            driver.quit();
+        try {
+            if (driver != null) {
+                driver.quit();
+            }
+        } catch (Exception e) {
+            System.out.println("problem in quiting the driver :: "+e.getMessage());
         }
+        driver=null;
+        actionDriver=null;
     }
 
 }
