@@ -11,8 +11,9 @@ public class HomePageTest extends BaseClass {
     {
 
 
-        String title = driver.getTitle();
-        Assert.assertEquals(title,"Unified OSS Console");
+        String actualTitle = driver.get().getTitle();
+        String expectedTitile = prop.getProperty("expectedTitile");
+        Assert.assertEquals(actualTitle,expectedTitile);
     }
 }
 

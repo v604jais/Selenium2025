@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class LoginPageTest extends BaseClass {
+public class LoginPageTest2 extends BaseClass {
 
     private LoginPage loginPage;
     private HomePage homePage;

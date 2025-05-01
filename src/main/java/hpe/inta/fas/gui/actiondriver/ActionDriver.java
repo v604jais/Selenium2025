@@ -10,6 +10,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
+import static hpe.inta.fas.gui.base.BaseClass.logger;
+
 
 public class ActionDriver {
 
@@ -29,8 +31,10 @@ public class ActionDriver {
             waitForElementToBeVisible(by);
             driver.findElement(by).clear();
             driver.findElement(by).sendKeys(value);
+            logger.info(" enter text on element -> " + getELementDescription(by)+ " text value is "+value);
         } catch (Exception e) {
-            System.out.println("not able to enter value in input box :: " + e.getMessage());
+            //System.out.println("not able to enter value in input box :: " + e.getMessage());
+            logger.error(" not able to enter text on element -> " + getELementDescription(by) + e.getMessage());
         }
     }
 
@@ -101,11 +105,13 @@ public class ActionDriver {
 
     //method to click an element
     public void clickAnElement(By by) {
+        String elementDescription = getELementDescription(by);
         try {
             waitForElementToBeClickable(by);
+            logger.info(" click element -> " + elementDescription);
             driver.findElement(by).click();
         } catch (Exception e) {
-            System.out.println(" unable to click element :: " + e.getMessage());
+            System.out.println(" unable to click element :: " + elementDescription + e.getMessage());
         }
     }
 
@@ -133,5 +139,47 @@ public class ActionDriver {
         }
     }
 
+    //get element Description
+    public String getELementDescription(By by) {
+        if (driver == null)
+            return "driver is null";
+        if (by == null)
+            return "locator is null";
+        try {
+            WebElement element = driver.findElement(by);
+            String name = element.getDomAttribute("name");
+            String className = element.getDomAttribute("class");
+            String id = element.getDomAttribute("id");
+            String placeHolder = element.getDomAttribute("placeHolder");
+            String text = element.getText();
+            if (isNotEmpty(name)) {
+                return "Element with name :: " + name;
+            } else if (isNotEmpty(id)) {
+                return "Element with name :: " + name;
+            } else if (isNotEmpty(className)) {
+                return "Element with className :: " + className;
+            } else if (isNotEmpty(placeHolder)) {
+                return "Element with placeHolder :: " + placeHolder;
+            } else if (isNotEmpty(text)) {
+                return "Element with text :: " + truncate(text, 50);
+            }
+        } catch (Exception e) {
+            logger.error(" unable to describe the element " + e.getMessage());
+        }
+        return " unable to describe the element ";
+    }
 
+    //check if string is not null and not empty
+    public boolean isNotEmpty(String value) {
+        return value != null && !value.isEmpty();
+    }
+
+    //truncate the text to maxLength
+    public String truncate(String value, int maxLength) {
+        if (value == null || value.length() <= maxLength) {
+            return value;
+        }
+        return value.substring(0, maxLength) + "...";
+
+    }
 }

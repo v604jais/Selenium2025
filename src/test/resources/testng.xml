@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<suite>
-    <test>
+<suite name="parallel test" parallel="classes" thread-count="5">
+    <listeners>
+        <listener class-name="hpe.inta.fas.gui.listeners.TestListeners"></listener>
+    </listeners>
+
+    <test name="FAS GUI TEST">
         <classes>
             <class name="hpe.inta.fas.gui.automation.tests.LoginPageTest"/>
+            <class name="hpe.inta.fas.gui.automation.tests.LoginPageTest2"/>
         </classes>
     </test>
 </suite>

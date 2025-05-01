@@ -21,10 +21,11 @@ import java.util.concurrent.locks.LockSupport;
 
 public class BaseClass {
 
-    protected static WebDriver driver;
     protected static Properties prop;
-    private  static ActionDriver actionDriver;
-
+    //protected static WebDriver driver;
+    //private  static ActionDriver actionDriver;
+    protected static ThreadLocal<WebDriver> driver= new ThreadLocal<>();
+    protected static ThreadLocal<ActionDriver> actionDriver= new ThreadLocal<>();
     public static final Logger logger = LoggerManager.getLogger(BaseClass.class);
 
     public void loadConfig() throws IOException {
@@ -52,7 +53,8 @@ public class BaseClass {
                 // Uncomment this to run headless
                 // options.addArguments("--headless");
                 //options.setAcceptInsecureCerts(true);
-                driver = new ChromeDriver(options);
+                //driver = new ChromeDriver(options);
+                driver.set(new ChromeDriver(options));
                 break;
             case "firefox":
                 FirefoxProfile profile = new FirefoxProfile();
@@ -60,11 +62,12 @@ public class BaseClass {
                 FirefoxOptions foptions = new FirefoxOptions();
                 foptions.setAcceptInsecureCerts(true);
                 foptions.setProfile(profile);
-
-                driver = new FirefoxDriver(foptions);
+                //driver = new FirefoxDriver(foptions);
+                driver.set(new FirefoxDriver(foptions));
                 break;
             case "edge":
-                driver = new EdgeDriver();
+                //driver = new EdgeDriver();
+                driver.set(new EdgeDriver());
                 break;
             default:
                 throw new IllegalArgumentException("Invalid Browser " + browser);
@@ -75,11 +78,11 @@ public class BaseClass {
     private void configBrowser() {
         //implicitwait through out session
         int implicitwait = Integer.parseInt(prop.getProperty("implicitwait"));
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(implicitwait));
+        driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(implicitwait));
         // maximize the driver
-        driver.manage().window().maximize();
+        driver.get().manage().window().maximize();
         // navigate to  url
-        driver.get(prop.getProperty("url"));
+        driver.get().get(prop.getProperty("url"));
     }
 
     //initializing the driver and launching browser
@@ -95,34 +98,35 @@ public class BaseClass {
         configBrowser();
         logger.info(" configuring browser ");
         // actionDriver
-        if(actionDriver == null){
+      /*  if(actionDriver == null){
             actionDriver = new ActionDriver(driver);
             logger.info(" initializing action driver ");
-        }
-
+        }*/
+         actionDriver.set(new ActionDriver(getDriver()));
+         logger.info("actionDriver intitalized for thread :: "+ Thread.currentThread().getId());
     }
 
     //driver getter method
     public static WebDriver getDriver() {
-        if (driver == null ){
+        if (driver.get() == null ){
             //System.out.println(" WebDriver is not initialized ");
             logger.error(" WebDriver is not initialized " );
             throw new IllegalArgumentException(" WebDriver is not initialized ");
         }
-        return driver;
+        return driver.get();
     }
     //actionDriver getter method
     public static ActionDriver getActionDriver() {
-        if (actionDriver == null ){
+        if (actionDriver.get() == null ){
             //System.out.println(" actionDriver is not initialized ");
             logger.error(" actionDriver is not initialized " );
             throw new IllegalArgumentException(" actionDriver is not initialized ");
         }
-        return actionDriver;
+        return actionDriver.get();
     }
 
     //driver setter method
-    public void setDriver(WebDriver driver) {
+    public void setDriver(ThreadLocal<WebDriver> driver) {
         logger.info(" setting driver ");
         this.driver = driver;
     }
@@ -143,16 +147,18 @@ public class BaseClass {
     //quit driver
     public void quitDriver() {
         try {
-            if (driver != null) {
-                driver.quit();
+            if (driver.get() != null) {
+                driver.get().quit();
                 logger.info("quiting the driver");
             }
         } catch (Exception e) {
             logger.error("problem in quiting the driver :: "+e.getMessage());
             //System.out.println("problem in quiting the driver :: "+e.getMessage());
         }
-        driver=null;
-        actionDriver=null;
+        //driver=null;
+        //actionDriver=null;
+        driver.remove();
+        actionDriver.remove();
     }
 
 }
