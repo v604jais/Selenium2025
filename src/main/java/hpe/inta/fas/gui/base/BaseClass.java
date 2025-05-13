@@ -41,7 +41,6 @@ public class BaseClass {
     private void launchBrowser() {
         //driver initialization based on browser
         String browser = prop.getProperty("browser");
-
         switch (browser) {
 
             case "chrome":

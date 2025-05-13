@@ -47,12 +47,12 @@ public class TestListeners implements ITestListener {
         ExtentManager.getReporter().flush();
 
     }
-
+    //triggeres at suite level
     @Override
     public void onStart(ITestContext context) {
         ExtentManager.getReporter();  // Initialize the report
     }
-
+    // triggeres at suite level
     @Override
     public void onFinish(ITestContext context) {
         ExtentManager.endTest();  // Flush the report

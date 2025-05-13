@@ -38,6 +38,8 @@ public class reverseString {
         String empty="";
         for(int i = name.length()-1; i>= 0; i--){
             empty=empty.concat(String.valueOf(name.charAt(i)));
+            String test=new StringBuilder(name).reverse().toString();
+            System.out.println("from string builder reverse "+test);
         }
         return empty;
     }

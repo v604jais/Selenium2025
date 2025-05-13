@@ -114,7 +114,6 @@ public class ActionDriver {
             System.out.println(" unable to click element :: " + elementDescription + e.getMessage());
         }
     }
-
     //get title of the page
     public String getTitle() {
         waitForPageLoad(20);

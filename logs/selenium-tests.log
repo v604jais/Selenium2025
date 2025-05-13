@@ -118,3 +118,82 @@ Session ID: ce1717bfcfc3ae9e35f2f70a39dec8d3
 2025-05-01 23:50:42 INFO  BaseClass:40 - Executing tearDown 
 2025-05-01 23:50:42 INFO  BaseClass:152 - quiting the driver
 2025-05-01 23:50:42 INFO  BaseClass:152 - quiting the driver
+2025-05-13 17:27:33 INFO  BaseClass:21 - Executing setUp Page 
+2025-05-13 17:27:33 INFO  BaseClass:92 -  running load config from setUp method 
+2025-05-13 17:28:07 INFO  BaseClass:95 -  launching browser 
+2025-05-13 17:28:09 INFO  BaseClass:98 -  configuring browser 
+2025-05-13 17:28:09 INFO  BaseClass:141 -  returning prop 
+2025-05-13 17:28:09 INFO  BaseClass:105 - actionDriver intitalized for thread :: 1
+2025-05-13 17:28:10 INFO  BaseClass:46 - reading excel
+2025-05-13 17:28:10 INFO  BaseClass:46 - reading excel
+2025-05-13 17:28:10 INFO  BaseClass:44 - Executing tearDown 
+2025-05-13 17:28:10 INFO  BaseClass:151 - quiting the driver
+2025-05-13 17:31:44 INFO  BaseClass:21 - Executing setUp Page 
+2025-05-13 17:31:44 INFO  BaseClass:92 -  running load config from setUp method 
+2025-05-13 17:31:46 INFO  BaseClass:95 -  launching browser 
+2025-05-13 17:31:48 INFO  BaseClass:98 -  configuring browser 
+2025-05-13 17:31:48 INFO  BaseClass:141 -  returning prop 
+2025-05-13 17:31:48 INFO  BaseClass:105 - actionDriver intitalized for thread :: 1
+2025-05-13 17:31:49 INFO  BaseClass:46 - reading excel
+2025-05-13 17:31:49 INFO  BaseClass:46 - reading excel
+2025-05-13 17:31:49 INFO  BaseClass:44 - Executing tearDown 
+2025-05-13 17:31:49 INFO  BaseClass:151 - quiting the driver
+2025-05-13 17:32:52 INFO  BaseClass:21 - Executing setUp Page 
+2025-05-13 17:32:52 INFO  BaseClass:92 -  running load config from setUp method 
+2025-05-13 17:32:54 INFO  BaseClass:95 -  launching browser 
+2025-05-13 17:32:56 INFO  BaseClass:98 -  configuring browser 
+2025-05-13 17:32:56 INFO  BaseClass:141 -  returning prop 
+2025-05-13 17:32:56 INFO  BaseClass:105 - actionDriver intitalized for thread :: 1
+2025-05-13 17:32:58 INFO  BaseClass:46 - reading excel
+2025-05-13 17:32:58 INFO  BaseClass:46 - reading excel
+2025-05-13 17:32:58 INFO  BaseClass:44 - Executing tearDown 
+2025-05-13 17:32:58 INFO  BaseClass:151 - quiting the driver
+2025-05-13 17:34:13 INFO  BaseClass:21 - Executing setUp Page 
+2025-05-13 17:34:13 INFO  BaseClass:92 -  running load config from setUp method 
+2025-05-13 17:34:15 INFO  BaseClass:95 -  launching browser 
+2025-05-13 17:34:17 INFO  BaseClass:98 -  configuring browser 
+2025-05-13 17:34:17 INFO  BaseClass:141 -  returning prop 
+2025-05-13 17:34:17 INFO  BaseClass:105 - actionDriver intitalized for thread :: 1
+2025-05-13 17:34:18 ERROR BaseClass:43 -  unable to read excel ->> Cannot invoke "org.apache.poi.ss.usermodel.Cell.getStringCellValue()" because the return value of "org.apache.poi.ss.usermodel.Row.getCell(int)" is null
+2025-05-13 17:34:18 INFO  BaseClass:46 - reading excel
+2025-05-13 17:34:18 ERROR BaseClass:43 -  unable to read excel ->> Cannot invoke "org.apache.poi.ss.usermodel.Cell.getStringCellValue()" because the return value of "org.apache.poi.ss.usermodel.Row.getCell(int)" is null
+2025-05-13 17:34:18 INFO  BaseClass:46 - reading excel
+2025-05-13 17:34:18 INFO  BaseClass:44 - Executing tearDown 
+2025-05-13 17:34:18 INFO  BaseClass:151 - quiting the driver
+2025-05-13 17:35:16 INFO  BaseClass:21 - Executing setUp Page 
+2025-05-13 17:35:16 INFO  BaseClass:92 -  running load config from setUp method 
+2025-05-13 17:35:17 INFO  BaseClass:95 -  launching browser 
+2025-05-13 17:35:19 INFO  BaseClass:98 -  configuring browser 
+2025-05-13 17:35:19 INFO  BaseClass:141 -  returning prop 
+2025-05-13 17:35:19 INFO  BaseClass:105 - actionDriver intitalized for thread :: 1
+2025-05-13 17:35:20 INFO  BaseClass:46 - reading excel
+2025-05-13 17:35:20 INFO  BaseClass:46 - reading excel
+2025-05-13 17:35:20 INFO  BaseClass:44 - Executing tearDown 
+2025-05-13 17:35:20 INFO  BaseClass:151 - quiting the driver
+2025-05-13 17:42:12 INFO  BaseClass:23 - Executing setUp Page 
+2025-05-13 17:42:12 INFO  BaseClass:92 -  running load config from setUp method 
+2025-05-13 17:42:14 INFO  BaseClass:95 -  launching browser 
+2025-05-13 17:42:16 INFO  BaseClass:98 -  configuring browser 
+2025-05-13 17:42:16 INFO  BaseClass:141 -  returning prop 
+2025-05-13 17:42:16 INFO  BaseClass:105 - actionDriver intitalized for thread :: 1
+2025-05-13 17:42:17 INFO  BaseClass:46 - reading excel
+2025-05-13 17:42:17 INFO  BaseClass:53 - Executing tearDown 
+2025-05-13 17:42:17 INFO  BaseClass:151 - quiting the driver
+2025-05-13 17:43:30 INFO  BaseClass:23 - Executing setUp Page 
+2025-05-13 17:43:30 INFO  BaseClass:92 -  running load config from setUp method 
+2025-05-13 17:43:32 INFO  BaseClass:95 -  launching browser 
+2025-05-13 17:43:35 INFO  BaseClass:98 -  configuring browser 
+2025-05-13 17:43:35 INFO  BaseClass:141 -  returning prop 
+2025-05-13 17:43:35 INFO  BaseClass:105 - actionDriver intitalized for thread :: 1
+2025-05-13 17:43:36 INFO  BaseClass:46 - reading excel
+2025-05-13 17:43:36 INFO  BaseClass:53 - Executing tearDown 
+2025-05-13 17:43:36 INFO  BaseClass:151 - quiting the driver
+2025-05-13 17:44:46 INFO  BaseClass:23 - Executing setUp Page 
+2025-05-13 17:44:46 INFO  BaseClass:92 -  running load config from setUp method 
+2025-05-13 17:44:47 INFO  BaseClass:95 -  launching browser 
+2025-05-13 17:44:49 INFO  BaseClass:98 -  configuring browser 
+2025-05-13 17:44:49 INFO  BaseClass:141 -  returning prop 
+2025-05-13 17:44:49 INFO  BaseClass:105 - actionDriver intitalized for thread :: 1
+2025-05-13 17:44:50 INFO  BaseClass:46 - reading excel
+2025-05-13 17:44:50 INFO  BaseClass:53 - Executing tearDown 
+2025-05-13 17:44:51 INFO  BaseClass:151 - quiting the driver
